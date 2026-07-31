@@ -1,0 +1,354 @@
+/* ==========================================
+   Escape To Our Future ❤️
+   Version 1.0
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#020617;
+    --bg2:#071126;
+    --pink:#ff5fa2;
+    --pinkLight:#ff8cc4;
+    --white:#ffffff;
+    --glass:rgba(255,255,255,.08);
+    --border:rgba(255,255,255,.18);
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(to bottom,var(--bg),var(--bg2));
+    color:white;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-10;
+}
+
+#stars,
+#rain,
+#hearts{
+    position:absolute;
+    inset:0;
+}
+
+#game{
+    width:min(850px,95%);
+    min-height:620px;
+
+    background:var(--glass);
+
+    border:1px solid var(--border);
+
+    border-radius:30px;
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 0 40px rgba(255,95,162,.2);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:50px;
+
+    text-align:center;
+}
+
+.screen{
+    width:100%;
+}
+
+h1{
+    font-size:3rem;
+    color:var(--pinkLight);
+    text-shadow:0 0 20px var(--pink);
+    margin-bottom:20px;
+}
+
+h2{
+    margin-bottom:20px;
+    font-weight:500;
+}
+
+p{
+    line-height:1.8;
+    font-size:1.1rem;
+}
+
+#fireworks{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+}
+/* ==========================================
+   Background Animations
+========================================== */
+
+/* ---------- Stars ---------- */
+
+#stars{
+    background-image:
+        radial-gradient(circle at 15% 20%, white 1px, transparent 2px),
+        radial-gradient(circle at 80% 15%, white 1px, transparent 2px),
+        radial-gradient(circle at 30% 70%, white 1px, transparent 2px),
+        radial-gradient(circle at 65% 45%, white 1px, transparent 2px),
+        radial-gradient(circle at 90% 80%, white 1px, transparent 2px),
+        radial-gradient(circle at 10% 90%, white 1px, transparent 2px);
+
+    background-size:450px 450px;
+
+    animation:twinkle 6s ease-in-out infinite;
+
+    opacity:.85;
+}
+
+/* ---------- Rain ---------- */
+
+#rain{
+
+    background-image:
+        repeating-linear-gradient(
+            120deg,
+            transparent 0px,
+            transparent 18px,
+            rgba(255,255,255,.12) 19px,
+            rgba(255,255,255,.12) 20px
+        );
+
+    animation:rain 0.5s linear infinite;
+
+}
+
+/* ---------- Hearts ---------- */
+
+#hearts::before{
+
+    content:"❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️";
+
+    position:absolute;
+
+    left:0;
+
+    width:100%;
+
+    font-size:26px;
+
+    opacity:.15;
+
+    animation:heartsFloat 18s linear infinite;
+
+}
+
+/* ==========================================
+   Animations
+========================================== */
+
+@keyframes twinkle{
+
+    0%,100%{
+        opacity:.5;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+}
+
+@keyframes rain{
+
+    from{
+        background-position:0 0;
+    }
+
+    to{
+        background-position:-40px 120px;
+    }
+
+}
+
+@keyframes heartsFloat{
+
+    from{
+        transform:translateY(110vh);
+    }
+
+    to{
+        transform:translateY(-120vh);
+    }
+
+}
+/* ==========================================
+   Buttons • Inputs • Responsive
+========================================== */
+
+/* ---------- Buttons ---------- */
+
+button{
+
+    background:linear-gradient(135deg,#ff5fa2,#ff3d8d);
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:999px;
+
+    padding:16px 36px;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    font-family:'Poppins',sans-serif;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 0 18px rgba(255,95,162,.45);
+
+}
+
+button:hover{
+
+    transform:translateY(-3px) scale(1.03);
+
+    box-shadow:0 0 35px rgba(255,95,162,.8);
+
+}
+
+button:active{
+
+    transform:scale(.96);
+
+}
+
+/* ---------- Inputs ---------- */
+
+input{
+
+    width:min(420px,95%);
+
+    padding:15px 18px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:1rem;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+input::placeholder{
+
+    color:rgba(255,255,255,.55);
+
+}
+
+input:focus{
+
+    border-color:#ff5fa2;
+
+    box-shadow:0 0 18px rgba(255,95,162,.35);
+
+}
+
+/* ---------- Fade ---------- */
+
+.fadeIn{
+
+    animation:fadeIn .8s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width:768px){
+
+    #game{
+
+        width:94%;
+
+        min-height:88vh;
+
+        padding:28px;
+
+    }
+
+    h1{
+
+        font-size:2rem;
+
+    }
+
+    h2{
+
+        font-size:1.2rem;
+
+    }
+
+    button{
+
+        width:100%;
+
+    }
+
+    input{
+
+        width:100%;
+
+    }
+
+}
