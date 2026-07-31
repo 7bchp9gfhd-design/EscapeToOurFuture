@@ -344,7 +344,7 @@ function roomFour(){
         <br>
 
         <img
-            src="images/1.jpg.jpeg"
+            src="1.jpg.jpeg"
             alt="Our Photo"
             style="
                 width:350px;
